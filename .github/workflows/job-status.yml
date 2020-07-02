@@ -1,0 +1,17 @@
+name: Job Status Dependency
+on: push
+
+jobs:
+  use-always:
+    runs-on: ubuntu-latest
+    steps:
+      - name: success
+        run: 'echo "success"'
+      - name: fail
+        run: exit 1
+      - name: failure
+        run: 'echo "failure"'
+        if: ${{ failure() }}
+      - name: always
+        run: 'echo "always"'
+        if: ${{ always() }}
