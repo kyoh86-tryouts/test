@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - run: go vet -json ./... > diagnostics.json
+      - run: go vet -json ./... 2> diagnostics.json
       - name: annotate diagnostics
         uses: kyoh86/go-check-action@master
         with:
