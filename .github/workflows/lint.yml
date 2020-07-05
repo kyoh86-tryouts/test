@@ -8,10 +8,10 @@ jobs:
       - uses: actions/setup-go@v2
       - run: go vet -json ./... 2> diagnostics.json
       - name: annotate diagnostics
-        uses: kyoh86/go-check-action/annotate@master
+        uses: kyoh86/go-check-action/annotate@v1
         with:
           level: error
       - name: annotate diagnostics
-        uses: kyoh86/go-check-action/annotate@master
+        uses: kyoh86/go-check-action/annotate@v1
         with:
           level: warning
