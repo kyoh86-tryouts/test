@@ -7,14 +7,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
       - run: go vet -json ./... > diagnostics.json
-      - name: Login to registries
-        uses: azure/docker-login@v1
-        with:
-          login-server: docker.pkg.github.com
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: annotate diagnostics
+        if: ${{ failure() }}
         uses: kyoh86/go-check-action@master
         with:
           level: error
