@@ -8,7 +8,10 @@ jobs:
       - uses: actions/setup-go@v2
       - run: go vet -json ./... > diagnostics.json
       - name: annotate diagnostics
-        if: ${{ failure() }}
         uses: kyoh86/go-check-action@master
         with:
           level: error
+      - name: annotate diagnostics
+        uses: kyoh86/go-check-action@master
+        with:
+          level: warning
