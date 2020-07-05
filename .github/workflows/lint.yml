@@ -5,7 +5,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - runs: go vet -json ./... > diagnostics.json
+      - run: go vet -json ./... > diagnostics.json
       - name: annotate diagnostics
         uses: docker://docker.pkg.github.com/kyoh86/go-check-action/go-check:latest
         with:
