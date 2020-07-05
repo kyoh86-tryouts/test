@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fmt.Println("%d", 3)
+	fmt.Println("%d in on", 0)
 }
