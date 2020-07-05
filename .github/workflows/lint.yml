@@ -8,6 +8,6 @@ jobs:
       - uses: actions/setup-go@v2
       - run: go vet -json ./... > diagnostics.json
       - name: annotate diagnostics
-        uses: kyoh86/go-check-action
+        uses: kyoh86/go-check-action@latest
         with:
           level: error
