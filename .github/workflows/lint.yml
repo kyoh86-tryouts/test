@@ -1,3 +1,4 @@
+name: lint
 on: [push]
 jobs:
   lint:
@@ -7,6 +8,6 @@ jobs:
       - uses: actions/setup-go@v2
       - run: go vet -json ./... > diagnostics.json
       - name: annotate diagnostics
-        uses: docker://docker.pkg.github.com/kyoh86/go-check-action/go-check:latest
+        uses: kyoh86/go-check-action
         with:
           level: error
