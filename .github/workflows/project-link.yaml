@@ -1,18 +1,13 @@
-on:
-  push:
-    branches:
-      - 'link-project'
-  issues:
-    types: [opened, edited, milestoned]
-
+name: Add a new GitHub Project card linked to a GitHub issue to the specified project column
+on: [issues, pull_request]
 jobs:
-  link:
+  github-actions-automate-projects:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v2
-        with:
-          version: 1.15.x
-      - name: Install GitHub CLI
-        run: go get github.com/cli/cli/cmd/gh
-      - name: Check GitHub CLI Installation
-        run: gh --version
+    - name: add-new-issues-to-repository-based-project-column
+      uses: docker://takanabe/github-actions-automate-projects:v0.0.1
+      if: github.event_name == 'issues' && github.event.action == 'opened'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_PROJECT_URL: https://github.com/kyoh86-tryouts/test/projects/1
+        GITHUB_PROJECT_COLUMN_NAME: test-1
