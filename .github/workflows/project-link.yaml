@@ -9,11 +9,10 @@ jobs:
   link:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-go@v2
+        with:
+          version: 1.15.x
       - name: Install GitHub CLI
-        run: |
-          apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-          apt-add-repository https://cli.github.com/packages
-          apt update
-          apt install gh
+        run: go get github.com/cli/cli
       - name: Check GitHub CLI Installation
         run: gh --version
