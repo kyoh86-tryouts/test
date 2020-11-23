@@ -1,4 +1,9 @@
-on: [issue]
+on:
+  push:
+    branches:
+      - 'link-project'
+  issues:
+    types: [opened, edited, milestoned]
 
 jobs:
   link:
