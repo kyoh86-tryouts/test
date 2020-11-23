@@ -13,6 +13,6 @@ jobs:
         with:
           version: 1.15.x
       - name: Install GitHub CLI
-        run: go get github.com/cli/cli
+        run: go get github.com/cli/cli/cmd/gh
       - name: Check GitHub CLI Installation
         run: gh --version
